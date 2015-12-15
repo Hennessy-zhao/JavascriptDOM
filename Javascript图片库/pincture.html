@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript图片库</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<style type="text/css">
+		#placeholder{
+			width: 800px;
+			height: 500px;
+			position: absolute;
+			left: 15%;
+			top:20%;
+		}
+	</style>
+</head>
+<body>
+	<h1>Snapshots</h1>
+	<ul>
+		<li>
+			<a href="public/picture/002.jpg" onclick="showpic(this);return false;">002</a>
+		</li>
+		<li>
+			<a href="public/picture/003.jpg" onclick="showpic(this);return false;">003</a>
+		</li>
+		<li>
+			<a href="public/picture/004.jpg" onclick="showpic(this);return false;">004</a>
+		</li>
+		<li>
+			<a href="public/picture/005.jpg" onclick="showpic(this);return false;">005</a>
+		</li>
+	</ul>
+
+	<img id="placeholder" src="public/picture/001.jpg" alt="My Image Gallery"/>
+
+	<script type="text/javascript">
+		function showpic(whichpic)
+		{
+			var source=whichpic.getAttribute("href");
+			var placeholder=document.getElementById("placeholder");
+			placeholder.setAttribute("src",source);
+		}
+	</script>
+</body>
+</html>
