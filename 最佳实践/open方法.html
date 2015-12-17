@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>windows的open方法</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<script src="public/js/jquery-2.1.4.min.js" ></script>
+	<link  rel="stylesheet" href="public/css/bootstrap.min.css"/>
+	<script src="public/js/bootstrap.js" ></script>
+	<style type="text/css">
+		.p1{
+			font-family: 微软雅黑;
+			font-size: 15px;
+		}
+	</style>
+</head>
+<body>
+	<h1>window.open(url,name,features)</h1>
+	<p class="p1">第一个参数是打开的新的网址的url地址</p>
+	<p class="p1">最后一个参数是以逗号分隔的字符串，其内容是新窗口的各种属性，包括新窗口的尺寸，以及被启动或者禁用的功能</p>
+	<p class="p1">这三个函数都是可选的，但是如果省略第一个参数，那么弹出来的就是一个空白的网页</p>
+	<br/>
+	<p class="p1">方法一：内嵌处理</p>
+	<a href="#" class="btn btn-success" onclick="onclick1('https://www.baidu.com/');return false;">百度网页</a>
+	<p class="p1">方法二：javascript伪协议</p>
+	<a href="javascript:onclick1('https://www.baidu.com/');" class="btn btn-success">百度网页</a>
+	<p class="p1">以上两种方法在禁用了javascript的浏览器里面是没有用的，最好的方法是使用第三种方式</p>
+	<p class="p1">方法三</p>
+	<a href="https://www.baidu.com/" class="btn btn-success" onclick="onclick1('https://www.baidu.com/');return false;">百度网页</a>
+	<p class="p1">简化后的方法三<p>
+	<a href="https://www.baidu.com/" class="btn btn-success" onclick="onclick1(this.getAttribute('href'));return false;">百度网页</a>
+	<p class="p1">再次简化后的方法三</p>
+	<a href="https://www.baidu.com/" class="btn btn-success" onclick="onclick1(this.href);return false;">百度网页</a>
+	<script type="text/javascript">
+		function onclick1(sitte)
+		{
+			window.open(sitte,"百度","width=500px,height=600px");
+		}
+	</script>
+</body>
+</html>

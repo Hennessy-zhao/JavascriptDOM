@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>分离javascript</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<script src="public/js/jquery-2.1.4.min.js" ></script>
+	<link  rel="stylesheet" href="public/css/bootstrap.min.css"/>
+	<script src="public/js/bootstrap.js" ></script>
+	<script type="text/javascript" src="public/js/script1.js"></script>
+	<style type="text/css">
+		.p1{
+			font-family: 微软雅黑;
+			font-size: 18px;
+		}
+
+		.a1{
+			font-size: 15px;
+			font-family: 微软雅黑;
+		}
+	</style>
+</head>
+<body>
+	<h1>javascript与html分离使用</h1>
+	<p class="p1">以下几个链接关于他们点击之后情况全部都放在public/js/script1.js里面</p><br/>
+	<a href="https://www.baidu.com/" class="a1">百度首页</a>
+	<a href="http://news.baidu.com/" class="a1">百度新闻</a>
+	<a href="http://map.baidu.com/" class="a1">百度地图</a>
+	<a href="http://v.baidu.com/" class="a1">百度视频</a>
+	<br/><br/>
+	<h1>性能考虑：</h1>
+	<p class="p1">1)尽量少访问DOM和减少标记</p>
+	   	一般令links=document.getElementsByTagName("a");<br/>
+	   	下面的访问全部使用links而不是每一次都使用document.getElementsByTagName("a")再进行一次dom访问<br/>
+	   	另外，减少不必要的元素标记也使得遍历DOM树的时候节约了元素时间<br/><br/>
+	<p class="p1">2)合并和放置脚本</p>
+		一般情况下把所有关于javascript的内容全部放在一个文件里面，不要分别放在不同的文件<br/>
+		在放置script标签时，一般情况下将标签放在文档末尾,/body标签之前
+	<p class="p1">3)压缩脚本</p>
+		当javascript文件写完之后，可以自行或者使用一些压缩脚本的工具将脚本内容中不必要的内容和注释压缩掉，从而减小整体文件的大小
+</body>
+</html>
