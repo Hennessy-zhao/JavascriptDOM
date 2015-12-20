@@ -1,0 +1,45 @@
+
+		body{
+			background-color: rgba(78, 78, 72, 0.12);
+		}
+		#placeholder{
+			width: 800px;
+			height: 400px;
+			border:1px solid black;
+		}
+
+		#body{
+			height: auto;
+		}
+
+		#title{
+			height: auto;
+			margin: 20px;
+		}
+		#picture{
+			height: auto;
+			margin: 10px;
+		}
+
+		#bodytitle{
+			height: auto;
+			margin: 10px;
+			font-family: Î¢ÈíÑÅºÚ;
+			font-size: 18px;
+		}
+
+		#imageGallery{
+			list-style:none;
+		}
+
+		#imageGallery li{
+			display:inline;
+		}
+
+
+		#img1{
+			width:100px;
+			height:100px;
+			margin:10px;
+		}
+	
