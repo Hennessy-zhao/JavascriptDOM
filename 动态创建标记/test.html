@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>关于document.write和innerHTML以及其他方法的应用</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<script src="public/js/jquery-2.1.4.min.js" ></script>
+	<link  rel="stylesheet" href="public/css/bootstrap.min.css"/>
+	<script src="public/js/bootstrap.js" ></script>
+	<style type="text/css">
+		p.p1{
+			font-family: 微软雅黑;
+			font-size: 15px;
+		}
+		p.p2{
+			font-family: 幼圆;
+			font-size: 18px;
+		}
+
+		#img1{
+			width: 500px;
+			height: 300px;
+		}
+	</style>
+	<h1>关于document.wirte()的应用以及不足</h1><br/><br/>
+</head>
+<body>
+
+	<p class="p2">1）document.write()比较直接的用法</p>
+	<script type="text/javascript">
+		document.write("<p class='p1'>This is inserted!!!</p>");
+	</script>
+	<br/><br/>
+	<p class="p2">2）document.write()使用调用函数的方法使用</p>
+	<script type="text/javascript">
+		function docu(text)
+		{
+			str="<p class='p1'>";
+			str+=text;
+			str+="</p>";
+			document.write(str);
+		}
+
+		docu("This is inserted!!!");
+	</script>
+	<br/><br/>
+	<p class="p2">3)缺点</p>
+	<p class="p1">从某种意义来讲，使用document.write()和使用font标签来改变文字属性一样，都不够优雅</p>
+	<p class="p1">只要有可能，最好使用外部css和javascript文件去控制网页的行为，避免使用document.write()方法</p>
+	<br/><br/>
+	<h1>关于innerHTML的应用</h1>
+	<p class="p2">点击按钮替换下一行的文本</p>
+	<p class="p1" id="p3">使用innerHTML替换文本</p>
+	<a type="button" class="btn btn-success"  id="a1">点击改变文本</a>
+	<br/><br/>
+	<p class="p2">·关于innerHTML</p>
+	<p class="p2">一旦你使用了innerHTML属性，它的全部内容都将被替换</p>
+	<p class="p1">在需要向html中插入一大份文档时，innerHTML可以让你既简单又轻松的达到你的目的</p>
+	<p class="p1">但是，innerHTML不会返回任何对刚插入的内容的引用。</p>
+	<p class="p1">如果想对刚插入的内容进行处理，则需要使用DOM提供的那些精确的方法和属性</p>
+	<br/><br/>
+	<h1>creatElement方法,appendChild方法和createTextNode方法</h1>
+	<div id="testdiv">
+		<p class="p1">点击下面按钮之后，增加一条文本</p>
+		<a type="button" class="btn btn-success"  id="a2">点击增加文本</a>
+	</div>
+	<br/><br/><br/>
+	<h2>小练习，用creatElement方法,appendChild方法和createTextNode方法完成下图Dom树的添加</h2>
+	<img src="Public/Picture/000.jpg" id="img1"><br/>
+	<a type="button" class="btn btn-success"  id="a3">点击增加文本</a>
+	<div id="testdiv2">
+
+	</div>
+	<br/><br/>
+	<script type="text/javascript">
+		function addLoadEvent(func)
+		{    						//此函数详解见书82页共享onload事件
+	   		var oldonload=window.onload;
+	  		if(typeof (window.onload !='function'))
+	  		{
+	   			window.onload=func; 
+	 		}
+	 		else
+	 		{
+	   			window.onload=function()
+	   			{
+	    			oldonload(); 
+	    			func();
+	  			}
+	 		}
+		}
+
+//****************************************使用innerHTML改变文本方法
+		addLoadEvent(insert);
+
+		function insert()
+		{
+			click1=document.getElementById("a1");
+			click1.onclick=function()
+			{
+				text1=document.getElementById("p3");
+				text1.innerHTML="替换成功！！";
+				return false;
+			}
+		}
+
+//****************************************使用createElement,appendChild和createTextNode方法
+		addLoadEvent(insert1);
+		function insert1()
+		{
+			click2=document.getElementById("a2");
+			click2.onclick=function()
+			{
+				var para=document.createElement("p");
+				var testdiv=document.getElementById("testdiv");
+				testdiv.appendChild(para);
+				txt=document.createTextNode("Hello word!!!");
+				para.appendChild(txt);
+			}
+		}
+
+//****************************************小练习
+		addLoadEvent(insert2);
+		function insert2()
+		{
+			click3=document.getElementById("a3");
+			click3.onclick=function()
+			{
+				var para=document.createElement("p");
+				var testdiv=document.getElementById("testdiv2");
+				testdiv.appendChild(para);
+				txt=document.createTextNode("This is ");
+				para.appendChild(txt);
+
+				var em1=document.createElement("em");
+				para.appendChild(em1);
+				txt1=document.createTextNode("my ");
+				em1.appendChild(txt1);
+
+				txt3=document.createTextNode("content.");
+				para.appendChild(txt3);
+
+			}
+		}
+	</script>
+</body>
+</html>
