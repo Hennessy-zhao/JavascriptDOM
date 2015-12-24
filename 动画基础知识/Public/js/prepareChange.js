@@ -7,9 +7,8 @@ function prepareChange(preview)
 {
 	item=preview;
 	item.style.position="absolute";
-	item.style.left="0px";			//117
+	item.style.left="0px";			
 	setTimeout("change1(item,0)",100);
-	//moveElement("preview",500,0,10);
 
 }
 function change1(item,star)
